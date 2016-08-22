@@ -34,23 +34,25 @@ request(quoteApi, function (error, response, body) {
 
 // If request was successful
   if (!error && response.statusCode == 200) {
-  	let randomQuote = JSON.parse(body);
+    let randomQuote = JSON.parse(body);
 
-  	let text = randomQuote.quoteText
-  	let author = randomQuote.quoteAuthor;
+    let text = randomQuote.quoteText
+    let author = randomQuote.quoteAuthor;
     toTweet = text + " by " + author; 
 
     console.log("\n  " +text);
 
   // Ask if user would like to post this
-
-  rl.question('\n\nType "yes" to tweet, "no" to exit\n' , (userChoice) => {
-  	// Tweet or get new quote based on user's choice
-  	if(userChoice.toLowerCase() == "yes")
-  		tweet(toTweet);
-  	if(userChoice.toLowerCase == "no")
-      
-  rl.close();
+  rl.question('\n\nType "yes" to tweet, "no" to start over\n' , (userChoice) => {
+    // Tweet or get new quote based on user's choice
+    if(userChoice.toLowerCase() == "yes")
+      tweet(toTweet);
+    // If user choose not to post
+    if(userChoice.toLowerCase() == "no")
+      // get a new quote
+      coolQuote();
+    
+    rl.close();
  });
 
   }
@@ -60,9 +62,10 @@ request(quoteApi, function (error, response, body) {
 function tweet(tweetText){
   // Post it to twitter
   client.post('statuses/update', {status: toTweet},  function(error, tweet, response) {
-  	if(error) throw error;
+    if(error) throw error;
 
-  			console.log("Tweet posted!");  });
+        console.log("Tweet posted!");  
+      });
 
  }
 
