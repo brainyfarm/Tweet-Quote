@@ -1,0 +1,29 @@
+{
+  "name": "tweet-quote",
+  "version": "1.0.0",
+  "description": "A commandline app that gets a random quote and tweets it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brainyfarm/Tweet-Quote.git"
+  },
+  "keywords": [
+    "twitter",
+    "api",
+    "quote",
+    "tweet",
+    "nodejs"
+  ],
+  "author": "Olawale Akinseye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brainyfarm/Tweet-Quote/issues"
+  },
+  "homepage": "https://github.com/brainyfarm/Tweet-Quote#readme",
+  "devDependencies": {
+    "twitter": "^1.4.0"
+  }
+}
